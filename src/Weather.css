@@ -1,0 +1,86 @@
+.Weather h1 {
+  text-align: left;
+  font-size: 30px;
+  font-weight: 700;
+  margin-top: 50px;
+  margin-left: 30px;
+  margin-bottom: 0;
+  font-size: 40px;
+}
+
+.Weather ul {
+  font-size: 16px;
+  font-weight: 200;
+  margin: 0;
+  text-decoration: none;
+  list-style-type: none;
+  font-weight: 300;
+}
+
+.weather-data {
+  font-size: 12px;
+}
+
+.formControl {
+  background-color: #f4f4f400;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #737373;
+  width: 380px;
+  color: #808080;
+  padding: 5px 20px 5px 0;
+  outline: none;
+  margin: 10px 40px 10px 30px;
+}
+
+::placeholder {
+  color: #808080;
+  opacity: 1;
+  font-size: 16px;
+  font-weight: 400;
+  padding-left: 0;
+  margin: 0;
+  font-family: "Urbanist", sans-serif;
+}
+
+.searchBtn {
+  font-size: 12px;
+  padding: 10px 30px;
+  border-radius: 30px;
+  border: none;
+  color: #eae9e2;
+  background-color: #181818;
+  margin-right: 5px;
+  margin-top: 10px;
+}
+
+.temperature {
+  font-size: 120px;
+  font-weight: 600;
+  margin-left: 30px;
+  margin-top: -10px;
+  height: fit-content;
+}
+
+.temperature-container {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.units {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.icon-block {
+  margin-top: 60px;
+}
+
+footer {
+  text-align: center;
+  font-weight: 200;
+  margin-top: 20px;
+  font-size: 14px;
+}
