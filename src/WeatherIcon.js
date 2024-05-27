@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  ReactSkycon,
-  RseClearDay,
-  RsePartlyCloudyNight,
-} from "react-skycons-extended";
+import { ReactSkycon } from "react-skycons-extended";
 
 export default function WeatherIcon(props) {
   const codeMapping = {
