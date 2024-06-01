@@ -1,8 +1,6 @@
 body {
-  background-color: rgb(226, 231, 237);
-  background-image: url("../public/images/Kuro_Chroma_Grainy_Gradients_Abstract_Shapes_07.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-  background-attachment: scroll;
+  background-attachment: fixed;
 }

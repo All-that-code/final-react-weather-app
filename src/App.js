@@ -1,11 +1,12 @@
+import React from "react";
 import "./App.css";
 import Weather from "./Weather";
 
-export default function App() {
+export default function App({ setAppBackground }) {
   return (
     <div className="App">
       <div className="container">
-        <Weather defaultCity="New York" />
+        <Weather defaultCity="New York" setAppBackground={setAppBackground} />
         <footer>
           Project coded by Amaia Arbizu and open-sourced on{" "}
           <a

@@ -1,36 +1,41 @@
 import React from "react";
-import { ReactSkycon } from "react-skycons-extended";
+import "./Weather.css";
 
 export default function WeatherIcon(props) {
   const codeMapping = {
-    "clear-sky-day": "CLEAR_DAY",
-    "clear-sky-night": "CLEAR_NIGHT",
-    "few-clouds-day": "PARTLY_CLOUDY_DAY",
-    "few-clouds-night": "PARTLY_CLOUDY_NIGHT",
-    "scattered-clouds-day": "PARTLY_CLOUDY_DAY",
-    "scattered-clouds-night": "PARTLY_CLOUDY_NIGHT",
-    "broken-clouds-day": "PARTLY_CLOUDY_DAY",
-    "broken-clouds-night": "PARTLY_CLOUDY_NIGHT",
-    "shower-rain-day": "SHOWERS_DAY",
-    "shower-rain-night": "SHOWERS_NIGHT",
-    "rain-day": "RAIN",
-    "rain-night": "RAIN",
-    "thunderstorm-day": "THUNDER_SHOWERS_DAY",
-    "thunderstorm-night": "THUNDER_SHOWERS_NIGHT",
-    "snow-day": "SNOW",
-    "snow-nigt": "SNOW",
-    "mist-day": "FOG",
-    "mist-night": "FOG",
-    "wind-day": "WIND",
-    "wind-night": "WIND",
+    "clear-sky-day": "/images/clear day.png",
+    "clear-sky-night": "/images/clear night.png",
+    "few-clouds-day": "/images/partially cloudy day.png",
+    "few-clouds-night": "/images/partially cloudy night.png",
+    "scattered-clouds-day": "/images/partially cloudy day.png",
+    "scattered-clouds-night": "/images/partially cloudy night.png",
+    "broken-clouds-day": "/images/very cloudy.png",
+    "broken-clouds-night": "/images/very cloudy.png",
+    "shower-rain-day": "/images/rain.png",
+    "shower-rain-night": "/images/rain.png",
+    "rain-day": "/images/rain.png",
+    "rain-night": "/images/rain.png",
+    "thunderstorm-day": "/images/thunder.png",
+    "thunderstorm-night": "/images/thunder.png",
+    "snow-day": "/images/snow.png",
+    "snow-night": "/images/snow.png",
+    "mist-day": "/images/fog.png",
+    "mist-night": "/images/fog.png",
+    "wind-day": "/images/mist.png",
+    "wind-night": "/images/mist.png",
   };
+
+  const imageSrc = codeMapping[props.code];
+
+  // Check if imageSrc is undefined
+  if (!imageSrc) {
+    console.error(`No image found for code: ${props.code}`);
+    return null; // or return a default image
+  }
+
   return (
     <div className="weatherIcon">
-      <ReactSkycon
-        icon={codeMapping[props.code]}
-        size={150}
-        color={"#383838"}
-      />
+      <img src={imageSrc} alt={props.code} width={180} height={150} />
     </div>
   );
 }

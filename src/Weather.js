@@ -1,23 +1,77 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
 import WeatherInfo from "./WeatherInfo";
 import "./Weather.css";
 import axios from "axios";
 
-export default function Weather(props) {
+export default function Weather({ defaultCity, setAppBackground }) {
   const [weatherData, setWeatherData] = useState({ ready: false });
-  const [city, setCity] = useState(props.defaultCity);
+  const [city, setCity] = useState(defaultCity);
+
+  useEffect(() => {
+    search();
+  }, []); // Run once when component mounts
+
   function handleResponse(response) {
-    setWeatherData({
+    const weatherData = {
       ready: true,
       date: new Date(response.data.time * 1000),
       temperature: response.data.temperature.current,
       humidity: response.data.temperature.humidity,
       wind: response.data.wind.speed,
       city: response.data.city,
-      condition: response.data.condition.description,
+      condition: response.data.condition.description.toLowerCase(),
       icon: response.data.condition.icon,
-    });
+    };
+
+    setWeatherData(weatherData);
+
+    // Set background image based on weather icon
+    const weatherIcon = weatherData.icon;
+    let bgImage = "";
+
+    if (
+      weatherIcon === "clear-sky-day" ||
+      weatherIcon === "few-clouds-day" ||
+      weatherIcon === "scattered-clouds-day"
+    ) {
+      bgImage = "/images/Kuro_Chroma_Grainy_Gradients_Abstract_Shapes_03.png";
+    } else if (
+      weatherIcon === "clear-sky-night" ||
+      weatherIcon === "few-clouds-night" ||
+      weatherIcon === "scattered-clouds-night"
+    ) {
+      bgImage = "/images/Kuro_Chroma_Grainy_Gradients_Abstract_Shapes_09.png";
+    } else if (
+      weatherIcon === "shower-rain-day" ||
+      weatherIcon === "shower-rain-night" ||
+      weatherIcon === "rain-day" ||
+      weatherIcon === "rain-night"
+    ) {
+      bgImage = "/images/Kuro_Chroma_Grainy_Gradients_Abstract_Shapes_05.png";
+    } else if (
+      weatherIcon === "broken-clouds-day" ||
+      weatherIcon === "broken-clouds-night"
+    ) {
+      bgImage = "/images/Kuro_Chroma_Grainy_Gradients_Abstract_Shapes_10.png";
+    } else if (
+      weatherIcon === "thunderstorm-day" ||
+      weatherIcon === "thunderstorm-night"
+    ) {
+      bgImage = "/images/Kuro_Chroma_Grainy_Gradients_Abstract_Shapes_04.png";
+    } else if (
+      weatherIcon === "snow-day" ||
+      weatherIcon === "snow-night" ||
+      weatherIcon === "mist-day" ||
+      weatherIcon === "mist-night" ||
+      weatherIcon === "wind-day" ||
+      weatherIcon === "wind-night"
+    ) {
+      bgImage = "/images/Kuro_Chroma_Grainy_Gradients_Abstract_Shapes_19.png";
+    } else {
+      bgImage = "/images/Kuro_Chroma_Grainy_Gradients_Abstract_Shapes_07.png";
+    }
+
+    setAppBackground(bgImage);
   }
 
   function search() {
@@ -46,7 +100,7 @@ export default function Weather(props) {
                 type="search"
                 placeholder="Enter a city.."
                 className="formControl"
-                autofocus="on"
+                autoFocus="on"
                 onChange={handleCityChange}
               />
             </div>
@@ -59,7 +113,6 @@ export default function Weather(props) {
       </div>
     );
   } else {
-    search();
     return "Loading...";
   }
 }
