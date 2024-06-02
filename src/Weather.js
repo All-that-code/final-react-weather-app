@@ -55,12 +55,9 @@ export default function Weather(props) {
             </div>
           </div>
         </form>
-        {weatherData.ready && (
-          <>
-            <WeatherInfo data={weatherData} />
-            <WeatherForecast city={weatherData.city} />
-          </>
-        )}
+
+        <WeatherInfo data={weatherData} />
+        <WeatherForecast city={weatherData.city} />
       </div>
     );
   } else {
