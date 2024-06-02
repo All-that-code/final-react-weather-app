@@ -27,10 +27,9 @@ export default function WeatherIcon(props) {
 
   const imageSrc = codeMapping[props.code];
 
-  // Check if imageSrc is undefined
   if (!imageSrc) {
     console.error(`No image found for code: ${props.code}`);
-    return null; // or return a default image
+    return null;
   }
 
   return (

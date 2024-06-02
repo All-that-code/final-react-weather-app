@@ -8,12 +8,23 @@ export default function App({ setAppBackground }) {
       <div className="container">
         <Weather defaultCity="New York" setAppBackground={setAppBackground} />
         <footer>
-          Project coded by Amaia Arbizu and open-sourced on{" "}
+          Project coded by Amaia Arbizu, open-sourced on{" "}
           <a
             className="Github-link"
             href="https://github.com/All-that-code/final-react-weather-app"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             GitHub
+          </a>{" "}
+          and hosted on{" "}
+          <a
+            className="Netlify-link"
+            href="https://weatheristemporary.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Netlify.
           </a>
         </footer>
       </div>

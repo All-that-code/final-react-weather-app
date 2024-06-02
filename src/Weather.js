@@ -26,7 +26,6 @@ export default function Weather({ defaultCity, setAppBackground }) {
 
     setWeatherData(weatherData);
 
-    // Set background image based on weather icon
     const weatherIcon = weatherData.icon;
     let bgImage = "";
 
