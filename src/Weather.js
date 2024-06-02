@@ -1,19 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import WeatherInfo from "./WeatherInfo";
 import WeatherForecast from "./WeatherForecast";
 import "./Weather.css";
 import axios from "axios";
 
-export default function Weather({ defaultCity, setAppBackground }) {
+export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
-  const [city, setCity] = useState(defaultCity);
+  const [city, setCity] = useState(props.defaultCity);
 
-  useEffect(() => {
-    search();
-  }, []);
-
-  function handleResponse(response) {
-    const weatherData = {
+  const handleResponse = useCallback((response) => {
+    setWeatherData({
       ready: true,
       date: new Date(response.data.time * 1000),
       temperature: response.data.temperature.current,
@@ -22,57 +18,18 @@ export default function Weather({ defaultCity, setAppBackground }) {
       city: response.data.city,
       condition: response.data.condition.description.toLowerCase(),
       icon: response.data.condition.icon,
-    };
+    });
+  }, []);
 
-    setWeatherData(weatherData);
+  const search = useCallback(() => {
+    const apiKey = "8o03bb70ba39844fdc4a5a5t25cc70b6";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }, [city, handleResponse]);
 
-    const weatherIcon = weatherData.icon;
-    let bgImage = "";
-
-    if (
-      weatherIcon === "clear-sky-day" ||
-      weatherIcon === "few-clouds-day" ||
-      weatherIcon === "scattered-clouds-day"
-    ) {
-      bgImage = "/images/Kuro_Chroma_Grainy_Gradients_Abstract_Shapes_03.png";
-    } else if (
-      weatherIcon === "clear-sky-night" ||
-      weatherIcon === "few-clouds-night" ||
-      weatherIcon === "scattered-clouds-night"
-    ) {
-      bgImage = "/images/Kuro_Chroma_Grainy_Gradients_Abstract_Shapes_09.png";
-    } else if (
-      weatherIcon === "shower-rain-day" ||
-      weatherIcon === "shower-rain-night" ||
-      weatherIcon === "rain-day" ||
-      weatherIcon === "rain-night"
-    ) {
-      bgImage = "/images/Kuro_Chroma_Grainy_Gradients_Abstract_Shapes_05.png";
-    } else if (
-      weatherIcon === "broken-clouds-day" ||
-      weatherIcon === "broken-clouds-night"
-    ) {
-      bgImage = "/images/Kuro_Chroma_Grainy_Gradients_Abstract_Shapes_10.png";
-    } else if (
-      weatherIcon === "thunderstorm-day" ||
-      weatherIcon === "thunderstorm-night"
-    ) {
-      bgImage = "/images/Kuro_Chroma_Grainy_Gradients_Abstract_Shapes_04.png";
-    } else if (
-      weatherIcon === "snow-day" ||
-      weatherIcon === "snow-night" ||
-      weatherIcon === "mist-day" ||
-      weatherIcon === "mist-night" ||
-      weatherIcon === "wind-day" ||
-      weatherIcon === "wind-night"
-    ) {
-      bgImage = "/images/Kuro_Chroma_Grainy_Gradients_Abstract_Shapes_19.png";
-    } else {
-      bgImage = "/images/Kuro_Chroma_Grainy_Gradients_Abstract_Shapes_07.png";
-    }
-
-    setAppBackground(bgImage);
-  }
+  useEffect(() => {
+    search();
+  }, [search]);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -81,13 +38,6 @@ export default function Weather({ defaultCity, setAppBackground }) {
 
   function handleCityChange(event) {
     setCity(event.target.value);
-  }
-
-  function search() {
-    const apiKey = "8o03bb70ba39844fdc4a5a5t25cc70b6";
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-
-    axios.get(apiUrl).then(handleResponse);
   }
 
   if (weatherData.ready) {
