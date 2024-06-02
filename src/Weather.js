@@ -10,7 +10,7 @@ export default function Weather({ defaultCity, setAppBackground }) {
 
   useEffect(() => {
     search();
-  }, [search]);
+  }, []);
 
   function handleResponse(response) {
     const weatherData = {
@@ -74,13 +74,6 @@ export default function Weather({ defaultCity, setAppBackground }) {
     setAppBackground(bgImage);
   }
 
-  function search() {
-    const apiKey = "8o03bb70ba39844fdc4a5a5t25cc70b6";
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-
-    axios.get(apiUrl).then(handleResponse);
-  }
-
   function handleSubmit(event) {
     event.preventDefault();
     search();
@@ -88,6 +81,13 @@ export default function Weather({ defaultCity, setAppBackground }) {
 
   function handleCityChange(event) {
     setCity(event.target.value);
+  }
+
+  function search() {
+    const apiKey = "8o03bb70ba39844fdc4a5a5t25cc70b6";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+
+    axios.get(apiUrl).then(handleResponse);
   }
 
   if (weatherData.ready) {
