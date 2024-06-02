@@ -1,0 +1,30 @@
+.WeatherForecast {
+  text-align: center;
+}
+
+.TemperatureMax {
+  font-weight: 500;
+}
+
+.TemperatureMin {
+  font-weight: 300;
+  margin-left: 5px;
+}
+
+.ForecastDay {
+  font-weight: 200;
+  margin-bottom: 5px;
+}
+
+.ForecastTemperatures {
+  margin-top: 3px;
+}
+
+.ForecastResults {
+  background-color: #ffffff30;
+  padding: 15px;
+  border-radius: 15px;
+  border: solid 0.3px white;
+  margin-right: 14px;
+  margin-left: 14px;
+}

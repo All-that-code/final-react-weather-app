@@ -35,7 +35,7 @@ export default function WeatherIcon(props) {
 
   return (
     <div className="weatherIcon">
-      <img src={imageSrc} alt={props.code} width={180} height={150} />
+      <img src={imageSrc} alt={props.code} width={props.width} />
     </div>
   );
 }

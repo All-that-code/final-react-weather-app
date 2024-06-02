@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import WeatherInfo from "./WeatherInfo";
+import WeatherForecast from "./WeatherForecast";
 import "./Weather.css";
 import axios from "axios";
 
@@ -9,7 +10,7 @@ export default function Weather({ defaultCity, setAppBackground }) {
 
   useEffect(() => {
     search();
-  }, []); // Run once when component mounts
+  }, []);
 
   function handleResponse(response) {
     const weatherData = {
@@ -110,6 +111,7 @@ export default function Weather({ defaultCity, setAppBackground }) {
           </div>
         </form>
         <WeatherInfo data={weatherData} />
+        <WeatherForecast city={weatherData.city} />
       </div>
     );
   } else {
