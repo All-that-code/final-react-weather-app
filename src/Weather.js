@@ -10,7 +10,7 @@ export default function Weather({ defaultCity, setAppBackground }) {
 
   useEffect(() => {
     search();
-  }, []);
+  }, [search]);
 
   function handleResponse(response) {
     const weatherData = {
