@@ -29,10 +29,12 @@ export default function WeatherForecast(props) {
           {forecast.map(function (dailyForecast, index) {
             if (index < 5) {
               return (
-                <div className="col ForecastResults key={index}">
+                <div className="col ForecastResults" key={index}>
                   <WeatherForecastDay data={dailyForecast} />
                 </div>
               );
+            } else {
+              return null; // Explicitly return null for indexes >= 5
             }
           })}
         </div>
