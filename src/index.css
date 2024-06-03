@@ -1,6 +1,7 @@
 body {
+  background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/128/121/original/Kuro_Chroma_Grainy_Gradients_Textures_with_Shapes_02.png?1717436400");
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-position: center;
   background-attachment: fixed;
 }

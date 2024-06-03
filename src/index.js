@@ -5,6 +5,8 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.css";
 
+console.log("PUBLIC_URL:", process.env.PUBLIC_URL);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 function setAppBackground(imageUrl) {
